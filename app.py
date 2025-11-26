@@ -32,7 +32,7 @@ def tts_mp3(text: str, voice: str="ja-JP-NanamiNeural", version: str=APP_VERSION
           </voice>
         </speak>
         """
-        communicate = edge_tts.Communicate(ssml, voice=voice, text_type="ssml")
+        communicate = edge_tts.Communicate(ssml, voice=voice)
 
         with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as f:
             tmp_path = f.name
@@ -89,3 +89,4 @@ if st.session_state.audio_text:
     st.markdown("### 🔈 發音播放")
     audio_bytes = tts_mp3(st.session_state.audio_text)
     play_audio_bytes(audio_bytes)
+
